@@ -34,6 +34,7 @@ $users = $stmt->fetchAll();
 <html lang="pt-br">
 
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>CRUD PHP</title>
 </head>
@@ -52,7 +53,7 @@ $users = $stmt->fetchAll();
     <form action="store.php" method="post">
         <p>
             <label>Nome:</label><br>
-            <input type="text" name="nomecompleto" required>
+            <input type="text" name="name" required>
         </p>
 
         <p>
