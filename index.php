@@ -41,8 +41,6 @@ $users = $stmt->fetchAll();
 
 <body id="vanta-bg">
 
-  <div class="cursor"></div>
-
     <h1>Cadastro de Alunos</h1>
 
     <!--
@@ -131,12 +129,13 @@ $users = $stmt->fetchAll();
         </tfoot>
     </table>
 
-    <!-- VANTA -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<script>
+    <!-- AQUI entra o Vanta -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <script>
 VANTA.NET({
-  el: "#vanta-bg",
+  el: "#vanta-bg", // MUITO IMPORTANTE mudar isso
   mouseControls: true,
   touchControls: true,
   gyroControls: false,
@@ -149,11 +148,12 @@ VANTA.NET({
   points: 13.00,
   maxDistance: 12.00,
   spacing: 16.00
-});
+})
 </script>
 
-<script src="cursor.js"></script>
+<div class="cursor"></div>
 
+<script src="cursor.js"></script>
 
 </body>
 

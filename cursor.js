@@ -1,28 +1,48 @@
 const cursor = document.querySelector(".cursor");
-const titles = document.querySelectorAll("h1, h2");
+const titles = document.querySelectorAll("h1");
 
-let mouseX = 0, mouseY = 0;
-let posX = 0, posY = 0;
+let mouseX = 0;
+let mouseY = 0;
 
-document.addEventListener("mousemove", e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+let posX = 0;
+let posY = 0;
+
+// Captura posição real do mouse
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
 
+// Efeito ao passar no título
 titles.forEach(title => {
-    title.addEventListener("mouseenter", () => cursor.classList.add("active"));
-    title.addEventListener("mouseleave", () => cursor.classList.remove("active"));
+  title.addEventListener("mouseenter", () => {
+    cursor.classList.add("active");
+  });
+
+  title.addEventListener("mouseleave", () => {
+    cursor.classList.remove("active");
+  });
 });
 
-document.addEventListener("mouseleave", () => cursor.classList.add("hidden"));
-document.addEventListener("mouseenter", () => cursor.classList.remove("hidden"));
+// Quando o mouse sai da janela
+document.addEventListener("mouseleave", () => {
+  cursor.classList.add("hidden");
+});
 
+// Quando o mouse volta
+document.addEventListener("mouseenter", () => {
+  cursor.classList.remove("hidden");
+});
+
+// Animação suave (50% mais rápido)
 function animate() {
-    posX += (mouseX - posX) * 0.12;
-    posY += (mouseY - posY) * 0.12;
-    cursor.style.left = posX + "px";
-    cursor.style.top = posY + "px";
-    requestAnimationFrame(animate);
+  posX += (mouseX - posX) * 0.12;
+  posY += (mouseY - posY) * 0.12;
+
+  cursor.style.left = posX + "px";
+  cursor.style.top = posY + "px";
+
+  requestAnimationFrame(animate);
 }
 
 animate();
