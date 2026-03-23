@@ -126,10 +126,9 @@ a:hover {
 
 /* Órbitas */
 .orbits {
-  position: absolute;
-  top: 50%;           /* centraliza verticalmente */
-  left: 50%;          /* centraliza horizontalmente */
-  transform: translate(-50%, -50%);
+  position: absolute; /* ou fixed se quiser que fique sempre visível ao rolar a página */
+  top: 0;             /* canto superior */
+  left: 0;            /* canto esquerdo */
   pointer-events: none;
   z-index: 1;         /* atrás do conteúdo */
 }
@@ -138,20 +137,20 @@ a:hover {
 .orbit {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(212,175,55,0.25); /* espessura e brilho */
+  border: 0Spx solid rgba(212,175,55,0.25); /* espessura e brilho */
   animation: rotate linear infinite;
 }
 
 /* Tamanho e velocidade das órbitas (ajuste aqui) */
 .orbit1 { width: 150px; height: 150px; animation-duration: 10s; }
-.orbit2 { width: 200px; height: 200px; animation-duration: 20s; }
-.orbit3 { width: 100px; height: 100px; animation-duration: 30s; }
-.orbit4 { width: 250px; height: 250px; animation-duration: 40s; }
+.orbit2 { width: 350px; height: 350px; animation-duration: 20s; }
+.orbit3 { width: 400px; height: 400px; animation-duration: 30s; }
+.orbit4 { width: 650px; height: 650px; animation-duration: 40s; }
 
 /* Planetas */
 .planet {
-  width: 6px;
-  height: 6px;
+  width: 12px;
+  height: 12px;
   background: #ffdd3f;
   border-radius: 50%;
   position: absolute;
@@ -163,6 +162,8 @@ a:hover {
 
 /* Planetas diferentes por órbita (opcional) */
 .orbit2 .planet { background: #ffffff; box-shadow: 0 0 8px #ffffff; }
+.orbit3 .planet { background: #d4af37; }
+.orbit3 .planet { background: #f0b3e0; box-shadow: 0 0 8px #ffffff; }
 .orbit3 .planet { background: #d4af37; }
 
 /* Animação de rotação */

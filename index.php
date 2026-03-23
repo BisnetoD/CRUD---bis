@@ -41,15 +41,15 @@ $users = $stmt->fetchAll();
 </head>
 
 <body id="vanta-bg">
-    <div class="main-container">
-  <!-- Órbitas -->
-  <div class="orbits">
-      <div class="orbit orbit1"><div class="planet"></div></div>
-      <div class="orbit orbit2"><div class="planet"></div></div>
-      <div class="orbit orbit3"><div class="planet"></div></div>
-      <div class="orbit orbit4"><div class="planet"></div></div>
-  </div>
+    <!-- Órbitas no canto superior esquerdo -->
+    <div class="orbits">
+        <div class="orbit orbit1"><div class="planet"></div></div>
+        <div class="orbit orbit2"><div class="planet"></div></div>
+        <div class="orbit orbit3"><div class="planet"></div></div>
+        <div class="orbit orbit4"><div class="planet"></div></div>
+    </div>
 
+    <!-- Conteúdo principal -->
     <h1>Cadastro de Alunos</h1>
 
     <!--
@@ -136,7 +136,7 @@ $users = $stmt->fetchAll();
             </tr>
         </tfoot>
     </table>
-    </div>
+    
 
 
     <!-- AQUI entra o Vanta -->

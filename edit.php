@@ -1,80 +1,30 @@
 <?php
-
-/**
- * Inclui o arquivo de conexão com o banco de dados.
- */
 require __DIR__ . "/connect.php";
 
-/**
- * Captura o parâmetro "id" enviado pela URL
- * e valida se ele é um número inteiro válido.
- *
- * Exemplo de URL:
- * edit.php?id=3
- */
 $id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+if (!$id) die("ID inválido.");
 
-/**
- * Se o ID não for válido, o script é interrompido.
- */
-if (!$id) {
-    die("ID inválido.");
-}
-
-/**
- * Obtém a conexão com o banco de dados.
- */
 $pdo = Connect::getInstance();
-
-/**
- * Prepara a consulta SQL para buscar apenas um usuário
- * com o ID informado.
- *
- * LIMIT 1 reforça que apenas um registro será retornado.
- */
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
-
-/**
- * Executa a consulta, passando o valor do ID.
- */
 $stmt->execute([":id" => $id]);
-
-/**
- * Busca o primeiro registro encontrado.
- * Como o ID é único, esperamos apenas um usuário.
- */
 $user = $stmt->fetch();
-
-/**
- * Se nenhum aluno for encontrado, interrompe a execução.
- */
-if (!$user) {
-    die("Aluno não encontrado.");
-}
+if (!$user) die("Aluno não encontrado.");
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>Editar aluno</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="vanta-bg">
 
     <h1>Editar aluno</h1>
 
-    <!--
-        Formulário responsável por enviar os dados atualizados
-        para o arquivo update.php.
-    -->
     <form action="update.php" method="post">
-        <!--
-            Campo oculto que envia o ID do aluno.
-            Ele é necessário para que o update.php saiba
-            qual registro deve ser atualizado.
-        -->
         <input type="hidden" name="id" value="<?= $user["id"] ?>">
 
         <p>
@@ -95,8 +45,32 @@ if (!$user) {
         <button type="submit">Atualizar</button>
     </form>
 
-    <p><a href="index.php">Voltar</a></p>
+    <p style="text-align:center; margin-top: 10px;"><a href="index.php">Voltar</a></p>
+
+    <!-- VANTA -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+      VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xffdd3f,
+        backgroundColor: 0x0a0018,
+        points: 13.00,
+        maxDistance: 12.00,
+        spacing: 16.00
+      })
+    </script>
+
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <script src="cursor.js"></script>
 
 </body>
-
 </html>
