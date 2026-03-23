@@ -4,23 +4,37 @@ body {
   min-height: 100%;
   color: goldenrod;
   font-family: 'Cinzel', serif;
+  background: #0a0018;
+}
+
+@font-face {
+    font-family: titulo;
+    src: url('fontes/RomanGridCaps.ttf');
 }
 
 h1 {
     margin-top: 0;
-  font-size: 2.2rem;
+  font-size: 6rex;
   text-align: center !important;
+  font-family: titulo;
+  font-weight: 100;
+  margin-top: 20px;
+  text-shadow: 0 0 30px #ae06b4;
 }
 
 h2 {
   margin: 30px 0 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   opacity: 0.9;
+  font-family: titulo;
+  font-weight: 100;
   text-align: center !important;
+  text-shadow: 0 0 20px #640d9e;
 }
 
 :root {
   --bg-dark: #0a0018;
+  --dark-gold: #996b15;
   --gold: #d4af37;
   --gold-soft: #ffdd3f;
   --text: #f5f5dc;
@@ -42,10 +56,10 @@ form {
 }
 
 input {
-  width: 100%;
+  width: 95%;
   padding: 8px;
-  background: transparent;
-  border: 1px solid var(--gold-soft);
+  background: rgba(5, 0, 10, 0.5); /* semi-transparente escuro */
+  border: 1px solid var(--dark-gold);
   color: var(--text);
   outline: none;
 }
@@ -104,33 +118,35 @@ a:hover {
   text-shadow: 0 0 5px var(--gold);
 }
 
-/* =========================
-   SISTEMA DE ÓRBITAS
-========================= */
+/* Container do conteúdo */
+.main-container {
+  position: relative;  /* órbitas ficam relativas a este bloco */
+  z-index: 2;          /* conteúdo acima das órbitas */
+}
 
+/* Órbitas */
 .orbits {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  position: absolute;
+  top: 50%;           /* centraliza verticalmente */
+  left: 50%;          /* centraliza horizontalmente */
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 0; /* 🔥 importante */
+  z-index: 1;         /* atrás do conteúdo */
 }
 
 /* Cada órbita */
 .orbit {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid red;
-  /*border: 2px solid rgba(212,175,55,0.25); /* 🔥 espessura e brilho */
+  border: 2px solid rgba(212,175,55,0.25); /* espessura e brilho */
   animation: rotate linear infinite;
 }
 
-/* 🔥 TAMANHO DAS ÓRBITAS (controle aqui) */
-.orbit1 { width: 200px; height: 200px; animation-duration: 10s; }
-.orbit2 { width: 350px; height: 350px; animation-duration: 20s; }
-.orbit3 { width: 500px; height: 500px; animation-duration: 30s; }
-.orbit4 { width: 650px; height: 650px; animation-duration: 40s; }
+/* Tamanho e velocidade das órbitas (ajuste aqui) */
+.orbit1 { width: 150px; height: 150px; animation-duration: 10s; }
+.orbit2 { width: 200px; height: 200px; animation-duration: 20s; }
+.orbit3 { width: 100px; height: 100px; animation-duration: 30s; }
+.orbit4 { width: 250px; height: 250px; animation-duration: 40s; }
 
 /* Planetas */
 .planet {
@@ -145,30 +161,14 @@ a:hover {
   box-shadow: 0 0 10px #ffdd3f;
 }
 
-/* 🔥 VARIAÇÃO DE PLANETAS (opcional) */
-.orbit2 .planet {
-  background: #ffffff;
-  box-shadow: 0 0 8px #ffffff;
-}
-
-.orbit3 .planet {
-  background: #d4af37;
-}
+/* Planetas diferentes por órbita (opcional) */
+.orbit2 .planet { background: #ffffff; box-shadow: 0 0 8px #ffffff; }
+.orbit3 .planet { background: #d4af37; }
 
 /* Animação de rotação */
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* 🔥 GARANTE QUE O CONTEÚDO FIQUE NA FRENTE */
-body > *:not(.orbits) {
-  position: relative;
-  z-index: 1;
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 canvas {
@@ -211,4 +211,3 @@ canvas {
   width: 100%;
   min-height: 100vh;
 }
-
