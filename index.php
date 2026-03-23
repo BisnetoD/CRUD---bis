@@ -37,6 +37,7 @@ $users = $stmt->fetchAll();
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>CRUD PHP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 
 <body id="vanta-bg">
@@ -69,7 +70,6 @@ $users = $stmt->fetchAll();
         <button type="submit">Cadastrar</button>
     </form>
 
-    <hr>
 
     <h2>Lista de alunos</h2>
 

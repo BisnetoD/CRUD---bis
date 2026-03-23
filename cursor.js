@@ -1,5 +1,5 @@
 const cursor = document.querySelector(".cursor");
-const titles = document.querySelectorAll("h1");
+const titles = document.querySelectorAll("h1, h2");
 
 let mouseX = 0;
 let mouseY = 0;
