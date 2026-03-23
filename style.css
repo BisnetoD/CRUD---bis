@@ -7,10 +7,17 @@ body {
 }
 
 h1 {
-  margin-top: 0;
+    margin-top: 0;
+  font-size: 2.2rem;
+  text-align: center !important;
 }
 
-
+h2 {
+  margin: 30px 0 10px;
+  font-size: 1.5rem;
+  opacity: 0.9;
+  text-align: center !important;
+}
 
 :root {
   --bg-dark: #0a0018;
@@ -21,13 +28,17 @@ h1 {
 }
 
 form {
-  background: rgba(10, 0, 24, 0.6);
+  background: rgba(5, 0, 10, 0.8);
   border: 1px solid var(--gold);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 20px;
   width: 300px;
-  backdrop-filter: blur(10px);
+
+  backdrop-filter: blur(2px); /* controla o desfoque */
+
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  
+  margin: 20px auto;
 }
 
 input {
@@ -60,9 +71,10 @@ button:hover {
 /*______TABELA______*/
 /*TABELA*/
 table {
-  width: 100%;
+  width: 80%; /* 🔥 AQUI você controla o tamanho */
+  margin: 20px auto; /* 🔥 centraliza a tabela */
+
   border-collapse: collapse;
-  margin-top: 20px;
   background: rgba(0,0,0,0.4);
   border: 1px solid var(--gold);
 }
@@ -92,20 +104,72 @@ a:hover {
   text-shadow: 0 0 5px var(--gold);
 }
 
-/*CIRCULOS*/
-body::before {
-  content: "";
+/* =========================
+   SISTEMA DE ÓRBITAS
+========================= */
+
+.orbits {
   position: fixed;
-  width: 600px;
-  height: 600px;
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 0; /* 🔥 importante */
 }
 
+/* Cada órbita */
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid red;
+  /*border: 2px solid rgba(212,175,55,0.25); /* 🔥 espessura e brilho */
+  animation: rotate linear infinite;
+}
+
+/* 🔥 TAMANHO DAS ÓRBITAS (controle aqui) */
+.orbit1 { width: 200px; height: 200px; animation-duration: 10s; }
+.orbit2 { width: 350px; height: 350px; animation-duration: 20s; }
+.orbit3 { width: 500px; height: 500px; animation-duration: 30s; }
+.orbit4 { width: 650px; height: 650px; animation-duration: 40s; }
+
+/* Planetas */
+.planet {
+  width: 6px;
+  height: 6px;
+  background: #ffdd3f;
+  border-radius: 50%;
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px #ffdd3f;
+}
+
+/* 🔥 VARIAÇÃO DE PLANETAS (opcional) */
+.orbit2 .planet {
+  background: #ffffff;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+.orbit3 .planet {
+  background: #d4af37;
+}
+
+/* Animação de rotação */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 🔥 GARANTE QUE O CONTEÚDO FIQUE NA FRENTE */
+body > *:not(.orbits) {
+  position: relative;
+  z-index: 1;
+}
 
 canvas {
   position: fixed;

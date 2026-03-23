@@ -42,6 +42,13 @@ $users = $stmt->fetchAll();
 
 <body id="vanta-bg">
 
+    <div class="orbits">
+        <div class="orbit orbit1"><div class="planet"></div></div>
+        <div class="orbit orbit2"><div class="planet"></div></div>
+        <div class="orbit orbit3"><div class="planet"></div></div>
+        <div class="orbit orbit4"><div class="planet"></div></div>
+    </div>
+
     <h1>Cadastro de Alunos</h1>
 
     <!--
@@ -128,6 +135,7 @@ $users = $stmt->fetchAll();
             </tr>
         </tfoot>
     </table>
+
 
     <!-- AQUI entra o Vanta -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
